@@ -48,3 +48,120 @@ public class Search_234_Tree {
 
     }
 }
+
+class Node {
+	public int dataLeft;
+	public int dataMid;
+	public int dataRight;
+	public Node left;
+	public Node midLeft;
+	public Node midRight;
+	public Node right;
+
+	public Node(int d){
+		dataLeft = d;
+		dataMid = dataRight = Integer.MIN_VALUE;
+		left = midLeft = midRight = right = null;
+	}
+
+	public Node(int d, Node l, Node ml){
+		dataLeft = d;
+		dataMid = dataRight = Integer.MIN_VALUE;
+		left = l;
+		midLeft = ml;
+		midRight = right = null;
+	}
+
+	public Node(int d1, int d2){
+		dataLeft = d1;
+		dataMid = d2;
+		dataRight = Integer.MIN_VALUE;
+		left = midLeft = midRight = right = null;
+	}
+
+	public Node(int d1, int d2, Node l, Node ml, Node mr){
+		dataLeft = d1;
+		dataMid = d2;
+		dataRight = Integer.MIN_VALUE;
+		left = l;
+		midLeft = ml;
+		midRight = mr;
+		right = null;
+	}
+
+	public Node(int d1, int d2, int d3){
+		dataLeft = d1;
+		dataMid = d2;
+		dataRight = d3;
+		left = midLeft = midRight = right = null;
+	}
+
+	public Node(int d1, int d2, int d3, Node l, Node ml, Node mr, Node r){
+		dataLeft = d1;
+		dataMid = d2;
+		dataRight = d3;
+		left = l;
+		midLeft = ml;
+		midRight = mr;
+		right = r;
+	}
+
+	public void inorder() {
+        if (left != null) {
+            left.inorder();
+        }
+
+        System.out.print(dataLeft + " ");
+
+        if (midLeft != null) {
+            midLeft.inorder();
+        }
+
+        if (dataMid != Integer.MIN_VALUE) {
+            System.out.print(dataMid + " ");
+        }
+
+        if (midRight != null) {
+            midRight.inorder();
+        }
+
+        if (dataRight != Integer.MIN_VALUE) {
+            System.out.print(dataRight + " ");
+        }
+
+        if (right != null) {
+            right.inorder();
+        }
+    }
+
+    public boolean search(int key) {
+        if (dataLeft == key || dataMid == key || dataRight == key) {
+            return true;
+        }
+
+        if (left == null && midLeft == null && midRight == null && right == null) {
+            return false;
+        }
+
+        if (key < dataLeft) {
+            if (left != null) {
+                return left.search(key);
+            }
+        } else if (key > dataLeft && (dataMid == Integer.MIN_VALUE || key < dataMid)) {
+            if (midLeft != null) {
+                return midLeft.search(key);
+            }
+        } else if (dataMid != Integer.MIN_VALUE && key > dataMid && (dataRight == Integer.MIN_VALUE || key < dataRight)) {
+            if (midRight != null) {
+                return midRight.search(key);
+            }
+        } else if (dataRight != Integer.MIN_VALUE && key > dataRight) {
+            if (right != null) {
+                return right.search(key);
+            }
+        }
+
+        return false;
+    }
+}
+
