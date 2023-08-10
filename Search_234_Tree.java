@@ -165,3 +165,27 @@ class Node {
     }
 }
 
+class My234Tree{
+	public Node root;
+
+	public My234Tree(){
+		root = null;
+	}
+
+	public My234Tree(Node r){
+		root = r;
+	}
+
+	public void inorder() {
+        if (root != null) {
+            root.inorder();
+        }
+    }
+
+    public boolean search(int key) {
+        if (root != null) {
+            return root.search(key);
+        }
+        return false;
+    }
+}
