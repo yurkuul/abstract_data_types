@@ -1,3 +1,43 @@
+import java.util.*;
+
+public class Tree234 {
+    public static void main(String[] args) {
+        Scanner keyboard;
+        String input;
+
+        keyboard = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Choose a traversal method to print out the 2-3-4 tree:");
+            input = keyboard.nextLine();
+            if (input.equals("preorder") ||input.equals("inorder") || input.equals("postorder")) {
+                break;
+            } else {
+                System.out.println("Invalid choice.");
+            }
+        }
+
+        keyboard.close();
+
+        //Pre-made tree
+        Node temp1 = new Node('A', new Node('E'), new Node('H'));
+        Node temp2 = new Node('F', new Node('G'), temp1);
+        Node temp3 = new Node('B', null, new Node('J'));
+        Node temp4 = new Node('C', temp3, null);
+        Node root = new Node('D', temp2, temp4);
+
+        if (input.equals("preorder")) {
+            root.preorder();
+        } else if (input.equals("postorder")) {
+            root.postorder();
+        } else if (input.equals("inorder")) {
+            root.inorder();
+        } else {
+            System.out.println("Invalid input");
+        }
+    }
+}
+
 /**
  * Node class used in a 2-3-4 tree data structure.
  */
