@@ -47,4 +47,49 @@ class Node {
     public void setRight(Node right) {
         this.right = right;
     }
+
+    /**
+     * Prints out the tree using preorder traversal. Visits the root first
+     * before traversing the entire left subtree and then traversing the right
+     * subtree.
+     */
+    public void preorder() {
+        System.out.print(data + " "); // Visit the root
+        if (left != null) {
+            left.preorder(); // Traverse left subtree
+        }
+        if (right != null) {
+            right.preorder(); // Traverse right subtree
+        }
+    }
+
+    /**
+     * Prints out the tree using inorder traversal. Visits the entire left
+     * subtree before visiting the root and then traverses the entire right
+     * subtree.
+     */
+    public void inorder() {
+        if (left != null) {
+            left.inorder(); //Traverse left subtree
+        }
+        System.out.print(data + " "); //Visit the root
+        if (right != null) {
+            right.inorder(); //Traverse right subtree
+        }
+    }
+
+    /**
+     * Prints out the tree using postorder traversal. Traverses the entire left
+     * subtree and then traverses the entire right subtree before visiting the
+     * root.
+     */
+    public void postorder() {
+        if (left != null) {
+            left.postorder(); //Traverse left subtree
+        }
+        if (right != null) {
+            right.postorder(); //Traverse right subtree
+        }
+        System.out.print(data + " "); //Visit the root
+    }
 }
